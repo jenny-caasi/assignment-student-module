@@ -9,10 +9,10 @@ export class StudentService {
     @InjectRepository(Student)
     private readonly studentRepository: Repository<Student>,
   ) {}
-  
-  async addStudent(studentDetails: Partial<Student>): Promise<Student> { // Create a new student
-    const newStudent = this.studentRepository.create(studentDetails);
-    return this.studentRepository.save(newStudent);
+
+  async getAllStudent(): Promise<Student[]> { // Get all students
+    return this.studentRepository.find();
   }
-  
+
+
 }

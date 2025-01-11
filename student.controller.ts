@@ -6,9 +6,10 @@ import { Student } from './student.entity';
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
-  @Post()
-  addStudent(@Body() studentData: Partial<Student>): Promise<Student> {
-    return this.studentService.addStudent(studentData);
+  @Get()
+  getAllStudent(): Promise<Student[]> {
+    return this.studentService.getAllStudent();
   }
+
 
 }

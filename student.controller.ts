@@ -6,13 +6,8 @@ import { Student } from './student.entity';
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
-  @Put(':studentId')
-  modifyStudent(
-    @Param('studentId') studentId: number, 
-    @Body() updatedDetails: Partial<Student>
-    ): Promise<Student> {
-    return this.studentService.modifyStudent(studentId, updatedDetails);
+  @Delete(':studentId')
+  deleteStudent(@Param('studentId') studentId: number): Promise<void> {
+    return this.studentService.deleteStudent(studentId);
   }
-
-
 }

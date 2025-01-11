@@ -6,9 +6,12 @@ import { Student } from './student.entity';
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
-  @Get()
-  getAllStudent(): Promise<Student[]> {
-    return this.studentService.getAllStudent();
+  @Put(':studentId')
+  modifyStudent(
+    @Param('studentId') studentId: number, 
+    @Body() updatedDetails: Partial<Student>
+    ): Promise<Student> {
+    return this.studentService.modifyStudent(studentId, updatedDetails);
   }
 
 
